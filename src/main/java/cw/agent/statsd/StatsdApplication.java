@@ -32,6 +32,7 @@ public class StatsdApplication {
 					"15:2"
 			);
 		}
+		Thread.sleep(5000);
 		client.close();
 	}
 

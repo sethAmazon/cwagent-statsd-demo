@@ -11,7 +11,7 @@ public class StatsdApplication {
 				.hostname("localhost")
 				.port(8125)
 				.build();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println("Sending seth-statd-metric");
 			client.gauge("seth-statd-metric", 101 * i,
 					"Seth0:Seth0",

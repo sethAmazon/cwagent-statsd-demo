@@ -29,7 +29,8 @@ public class StatsdApplication {
 					"12:2",
 					"13:2",
 					"14:2",
-					"15:2"
+					"15:2",
+					"512:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod nibh id volutpat blandit. Sed quis aliquam nulla. Fusce imperdiet dui justo, sit amet blandit nunc pulvinar at. Donec mattis lorem eget eros iaculis, at posuere nisl ornare. Vestibulum sed sem lectus. Integer nec nisi ut est interdum sollicitudin eleifend at metus. Sed a consectetur sapien. Integer non tellus a lectus mollis hendrerit sed ac orci. Praesent sed diam metus. Phasellus nec leo malesuada, dictum mi sed, tincidunt nisi laoreet."
 			);
 		}
 		Thread.sleep(5000);

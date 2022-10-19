@@ -17,6 +17,8 @@ public class StatsdApplication {
         long metricsPublished = Long.parseLong(args[4]);
         long initialValue = Long.parseLong(args[5]);
         int sleep = Integer.parseInt(args[6]);
+        String tagName = args[7];
+        String tagValue = args[8];
         StatsDClient client = new NonBlockingStatsDClientBuilder()
                 .prefix(prefix)
                 .hostname(hostname)
@@ -25,7 +27,7 @@ public class StatsdApplication {
         for (int i = 0; i < metricsPublished; i++) {
             long value = initialValue * i;
             System.out.println("Sending " + metricName + " " + value);
-            client.gauge(metricName, value, "SomeStatsdTag:SomeStatsdTag");
+            client.gauge(metricName, value, tagName + ":" + tagValue);
             Thread.sleep(sleep);
         }
         client.close();

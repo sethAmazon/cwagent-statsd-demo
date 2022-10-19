@@ -11,4 +11,4 @@ arg order
 6. initialValue
 7. sleep in milliseconds
 
-./gradlew bootRun --args=statsd,localhost,8125,statd-metric,180,111,20000
+./gradlew bootRun --args=statsd,localhost,8125,statd-metric,180,111,20000,tagName,tagValue

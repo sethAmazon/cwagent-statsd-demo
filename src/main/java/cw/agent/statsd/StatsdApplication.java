@@ -13,8 +13,9 @@ public class StatsdApplication {
                 .build();
         long i = 0;
         while (i < 180) {
-            System.out.println("Sending seth-statd-metric");
-            client.gauge("seth-statd-metric", 111L * i,
+            long value = 111L * i;
+            System.out.println("Sending seth-statd-metric " + value);
+            client.gauge("seth-statd-metric", value,
                     "Seth0:Seth0",
                     "S1:S1",
                     "2:2",

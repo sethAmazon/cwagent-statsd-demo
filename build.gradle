@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "com.google.cloud.tools.jib" version "3.3.0"
 }
 
 group = 'cw.agent'
@@ -21,3 +22,5 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jib.to.image = '${your-ecr-repo-here}'

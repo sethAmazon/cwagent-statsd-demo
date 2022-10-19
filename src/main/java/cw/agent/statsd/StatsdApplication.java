@@ -13,9 +13,10 @@ public class StatsdApplication {
                 .build();
         long i = 0;
         while (i < 180) {
+            String metricName = "seth-statd-metric";
             long value = 111L * i;
-            System.out.println("Sending seth-statd-metric " + value);
-            client.gauge("seth-statd-metric", value,
+            System.out.println("Sending " + metricName + " " + value);
+            client.gauge(metricName, value,
                     "Seth0:Seth0",
                     "S1:S1",
                     "2:2",

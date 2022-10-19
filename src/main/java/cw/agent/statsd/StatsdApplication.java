@@ -3,41 +3,31 @@ package cw.agent.statsd;
 import com.timgroup.statsd.NonBlockingStatsDClientBuilder;
 import com.timgroup.statsd.StatsDClient;
 
+import java.util.Arrays;
+
 public class StatsdApplication {
 
     public static void main(String[] args) throws InterruptedException {
+        args = args[0].split(",");
+        System.out.println("args " + Arrays.toString(args));
+        String prefix = args[0];
+        String hostname = args[1];
+        int port = Integer.parseInt(args[2]);
+        String metricName = args[3];
+        long metricsPublished = Long.parseLong(args[4]);
+        long initialValue = Long.parseLong(args[5]);
+        int sleep = Integer.parseInt(args[6]);
         StatsDClient client = new NonBlockingStatsDClientBuilder()
-                .prefix("statsd")
-                .hostname("localhost")
-                .port(8125)
+                .prefix(prefix)
+                .hostname(hostname)
+                .port(port)
                 .build();
-        long i = 0;
-        while (i < 180) {
-            String metricName = "seth-statd-metric";
-            long value = 111L * i;
+        for (int i = 0; i < metricsPublished; i++) {
+            long value = initialValue * i;
             System.out.println("Sending " + metricName + " " + value);
-            client.gauge(metricName, value,
-                    "Seth0:Seth0",
-                    "S1:S1",
-                    "2:2",
-                    "3:2",
-                    "4:2",
-                    "5:2",
-                    "6:2",
-                    "7:2",
-                    "8:2",
-                    "9:2",
-                    "10:2",
-                    "11:2",
-                    "12:2",
-                    "13:2",
-                    "14:2",
-                    "15:2",
-                    "512:Lorem ipsum dolor sit amet. consectetur adipiscing elit. Duis euismod nibh id volutpat blandit. Sed quis aliquam nulla. Fusce imperdiet dui justo. sit amet blandit nunc pulvinar at. Donec mattis lorem eget eros iaculis. at posuere nisl ornare. Vestibulum sed sem lectus. Integer nec nisi ut est interdum sollicitudin eleifend at metus. Sed a consectetur sapien. Integer non tellus a lectus mollis hendrerit sed ac orci. Praesent sed diam metus. Phasellus nec leo malesuada. dictum mi sed. tincidunt nisi laoreet.");
-            Thread.sleep(20000);
-            i++;
+            client.gauge(metricName, value, "SomeStatsdTag:SomeStatsdTag");
+            Thread.sleep(sleep);
         }
         client.close();
     }
-
 }

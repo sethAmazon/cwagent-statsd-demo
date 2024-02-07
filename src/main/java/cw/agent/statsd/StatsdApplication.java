@@ -8,6 +8,9 @@ import java.util.Arrays;
 public class StatsdApplication {
 
     public static void main(String[] args) throws InterruptedException {
+        if (args == null || args.length == 0) {
+            args = new String[]{"seth,localhost,8125,statsd-metric,1000,10,10000,seth,seth"};
+        }
         args = args[0].split(",");
         System.out.println("args " + Arrays.toString(args));
         String prefix = args[0];
